@@ -26,7 +26,7 @@ function MQTTconnect() {
 	mqtt=new Paho.MQTT.Client(host, port, "nom_client") ;
 	mqtt.onMessageArrived=onMessageArrived ;
 	var options = {timeout :3 , onSuccess :onConnect, onFailure:onFailure,};
-	mqtt.conect(options);
+	mqtt.connect(options);
 }
 </script>
 
