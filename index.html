@@ -16,7 +16,7 @@ function onMessageArrived(msg){
       // Conversion de la string en JSON
       msg_JSON = JSON.parse(msg.payloadString);
       //document.getElementById("device").innerHTML=msg_JSON.deviceName;    Device : <p id="device"></p>
-      document.getElementById("data").innerHTML=msg_JSON.object.temperature;
+      document.getElementById("data").innerHTML=msg_JSON.doc.object.temperature;
 }
 function onConnect(){
 	mqtt.subscribe("ma_maison/chambre");//topic
