@@ -15,7 +15,7 @@ function onFailure(message){
 function onMessageArrived(msg){
       // Conversion de la string en JSON
       msg_JSON = JSON.parse(msg.payloadString);
-      document.getElementById("device").innerHTML=msg_JSON.deviceName;
+      //document.getElementById("device").innerHTML=msg_JSON.deviceName;
       document.getElementById("data").innerHTML=msg_JSON.object.temperature;
 }
 function onConnect(){
@@ -34,8 +34,8 @@ function MQTTconnect() {
     <h1>MQTT sur WebSocket</h1>
     Exemple de connection WebSocket MQTT avec client paho-mqtt JavaScript.
     <script>MQTTconnect();</script>
-    Device : <p id="device"></p>
-    <p></p>
+    //Device : <p id="device"></p>
+    //<p></p>
     Temperature : <p id="data"></p>
    </body>	
 </html>
