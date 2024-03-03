@@ -4,11 +4,11 @@
 	<script src=https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.js type="text/javascript"> </script>
 	<script type= "text/javascript" language="javascript">
 	var mqtt ;
-	var host= "mqtt.eclipseprojects.io" ;
+	var host= "mqtt.eclipseprojects.io/mqtt" ;
 	var port=8080 ;
 
 function onFailure(message){
-	console.log(" Echec de connexion a " +host) ;
+	console.log(" Echec de connexion a " + host) ;
 	setTimeout(MQTTconnect, 2000) ;
 }
 
@@ -20,12 +20,12 @@ function onMessageArrived(msg){
 }
 function onConnect(){
 	mqtt.subscribe("ma_maison/chambre") ;//topic
-	document.getElementById("data").innerHTML= "Connecte a "+host;
+	document.getElementById("data").innerHTML= "Connecte a "+ host;
 }
 function MQTTconnect() {
 	mqtt=new Paho.MQTT.Client(host, port, "nom_client") ;
 	mqtt.onMessageArrived=onMessageArrived ;
-	var options = {timeout :3 , onSuccess :onConnect, onFailure:onFailure,};
+	var options = {timeout :3 , onSuccess : onConnect, onFailure: onFailure,};
 	mqtt.connect(options);
 }
 </script>
