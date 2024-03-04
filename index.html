@@ -20,7 +20,7 @@ function onMessageArrived(msg){
 }
 function onConnect(){
 	mqtt.subscribe("ma_maison/chambre");//topic
-	document.getElementById("data").innerHTML= "Connecte a "+ host;
+	//document.getElementById("data").innerHTML= "Connecte a "+ host;
 }
 function MQTTconnect() {
 	mqtt=new Paho.MQTT.Client(host, port, "nom_client") ;
