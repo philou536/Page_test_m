@@ -17,11 +17,11 @@ function onMessageArrived(msg){
       // Conversion de la string en JSON//Temperature : <p id="data"></p>
       msg_JSON = JSON.parse(msg.payloadString);
       document.getElementById("device").innerHTML=msg_JSON.deviceName;    
-      //document.getElementById("data").innerHTML=msg_JSON.object.temperature;
+      document.getElementById("data").innerHTML=msg_JSON.object.temperature;
 }
 function onConnect(){
 	mqtt.subscribe("ma_maison/chambre");//topic
-	//document.getElementById("data").innerHTML= "Connecte a "+ host;
+	document.getElementById("data").innerHTML= "Connecte a "+ host;
 }
 function MQTTconnect() {
 	mqtt=new Paho.MQTT.Client(host, port, "nom_client") ;
