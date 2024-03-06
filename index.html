@@ -5,8 +5,8 @@
 	<script type="text/javascript" language="javascript">
 	var mqtt ;
 	//var host= "ws://test.mosquitto.org" ;
-	var host="ws://mqtt.eclipseprojects.io/mqtt";
-	var port=80 ;
+	var host="mqtt.eclipseprojects.io";
+	var port=1883 ;
 
 function onFailure(message){
 	console.log(" Echec de connexion a " + host) ;
@@ -16,8 +16,8 @@ function onFailure(message){
 function onMessageArrived(msg){
       // Conversion de la string en JSON//Temperature : <p id="data"></p>
       msg_JSON = JSON.parse(msg.payloadString);
-      document.getElementById("device").innerHTML=msg_JSON.deviceName;    
-      document.getElementById("data").innerHTML=msg_JSON.object.temperature;
+      document.getElementById("device").innerHTML=msg_JSON.root.deviceName;    
+      document.getElementById("data").innerHTML=msg_JSON.root.object.temperature;
 }
 function onConnect(){
 	mqtt.subscribe("ma_maison/chambre");//topic
@@ -36,6 +36,7 @@ function MQTTconnect() {
     Exemple de connection WebSocket MQTT avec client paho-mqtt JavaScript.
     <script>MQTTconnect();</script>
 	<p></p>
+	Temperature : <p id="data"></p>
 	Device : <p id="device"></p>
     <p></p>
     
