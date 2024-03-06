@@ -5,8 +5,8 @@
 	<script type="text/javascript" language="javascript">
 	var mqtt ;
 	//var host= "ws://test.mosquitto.org" ;
-	var host="mqtt.eclipseprojects.io";
-	var port=1883 ;
+	var host="ws://mqtt.eclipseprojects.io/mqtt";
+	var port=80 ;
 
 function onFailure(message){
 	console.log(" Echec de connexion a " + host) ;
@@ -16,7 +16,7 @@ function onFailure(message){
 function onMessageArrived(msg){
       // Conversion de la string en JSON//Temperature : <p id="data"></p>
       msg_JSON = JSON.parse(msg.payloadString);
-      document.getElementById("device").innerHTML=msg_JSON.deviceName;    
+      document.getElementById("device").innerHTML=msg_JSON.root.deviceName;    
       document.getElementById("data").innerHTML=msg_JSON.object.temperature;
 }
 function onConnect(){
