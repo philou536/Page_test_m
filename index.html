@@ -16,8 +16,8 @@ function onFailure(message){
 function onMessageArrived(msg){
       // Conversion de la string en JSON//Temperature : <p id="data"></p>
       msg_JSON = JSON.parse(msg.payloadString);
-	  console.log("Message reçu : " + message.payloadString);
-	  alert("Message reçu : " + message.payloadString);
+	  console.log("Message reçu : " + msg.payloadString);
+	  alert("Message reçu : " + msg.payloadString);
       //document.getElementById("device").innerHTML=msg_JSON.root.deviceName;    
       //document.getElementById("data").innerHTML=msg_JSON.root.object.temperature;
 }
