@@ -28,7 +28,7 @@ function onConnect(){
 }
 function MQTTconnect() {
 	mqtt=new Paho.MQTT.Client(host, port, "nom_client") ;
-	var options = {onSuccess:onConnect, onFailure:onFailure};
+	var options = {onSuccess:onConnect, onFailure:onFailure, useSSL: true};
 	mqtt.connect(options);
 	mqtt.onMessageArrived=onMessageArrived ;
 }
