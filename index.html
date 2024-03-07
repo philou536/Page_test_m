@@ -4,9 +4,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"> </script>
 	<script type="text/javascript" language="javascript">
 	var mqtt ;
-	var host= "ws://test.mosquitto.org" ;
-	//var host="ws://mqtt.eclipseprojects.io/mqtt";
-	var port=8080 ;
+	//var host= "ws://test.mosquitto.org" ;
+	var host="ws://mqtt.eclipseprojects.io/mqtt";
+	var port=80 ;
 
 function onFailure(message){
 	console.log(" Echec de connexion a " + host) ;
@@ -16,19 +16,24 @@ function onFailure(message){
 function onMessageArrived(msg){
       // Conversion de la string en JSON//Temperature : <p id="data"></p>
       msg_JSON = JSON.parse(msg.payloadString);
-      document.getElementById("device").innerHTML=msg_JSON.root.deviceName;    
-      document.getElementById("data").innerHTML=msg_JSON.root.object.temperature;
+	  console.log("Message reçu : " + message.payloadString);
+	  alert("Message reçu : " + message.payloadString);
+      //document.getElementById("device").innerHTML=msg_JSON.root.deviceName;    
+      //document.getElementById("data").innerHTML=msg_JSON.root.object.temperature;
 }
 function onConnect(){
+	console.log("Connexion au broker MQTT réussie !");
 	mqtt.subscribe("ma_maison/chambre");//topic
-	document.getElementById("data").innerHTML= "Connecte a "+ host;
+	//document.getElementById("data").innerHTML= "Connecte a "+ host;
 }
 function MQTTconnect() {
 	mqtt=new Paho.MQTT.Client(host, port, "nom_client") ;
-	var options = {timeout:3 , onSuccess:onConnect, onFailure:onFailure};
+	var options = {onSuccess:onConnect, onFailure:onFailure};
 	mqtt.connect(options);
 	mqtt.onMessageArrived=onMessageArrived ;
 }
+//	Temperature : <p id="data"></p>
+//	Device : <p id="device"></p>
 </script>
 </head>
 <body>
@@ -36,8 +41,7 @@ function MQTTconnect() {
     Exemple de connection WebSocket MQTT avec client paho-mqtt JavaScript.
     <script>MQTTconnect();</script>
 	<p></p>
-	Temperature : <p id="data"></p>
-	Device : <p id="device"></p>
+
     <p></p>
     
    </body>	
